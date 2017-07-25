@@ -1,4 +1,4 @@
-package com.edu.spring;
+package org.edu.spring;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -9,7 +9,7 @@ public class App02 {
 
 	public static void main(String[] args) {
 		// By package
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.edu.spring");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.edu.spring");
 		System.out.println();
 
 		// Get bean

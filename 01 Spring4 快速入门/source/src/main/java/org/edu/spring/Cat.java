@@ -1,4 +1,4 @@
-package com.edu.spring;
+package org.edu.spring;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

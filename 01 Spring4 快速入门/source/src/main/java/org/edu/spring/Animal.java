@@ -1,4 +1,4 @@
-package com.edu.spring;
+package org.edu.spring;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

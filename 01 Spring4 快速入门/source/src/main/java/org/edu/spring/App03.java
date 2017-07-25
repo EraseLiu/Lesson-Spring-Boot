@@ -1,11 +1,11 @@
-package com.edu.spring;
+package org.edu.spring;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App03 {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.edu.spring");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.edu.spring");
 		System.out.println();
 		System.out.println(context.getBean(UserController.class).toString());
 		System.out.println(context.getBean(UserService.class).toString());

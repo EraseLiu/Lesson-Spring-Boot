@@ -1,4 +1,4 @@
-package com.edu.spring;
+package org.edu.spring;
 
 public class MyBean {
 

@@ -1,4 +1,4 @@
-package com.edu.spring;
+package org.edu.spring;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
