@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>spring</name>
+	<name>Spring01</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
