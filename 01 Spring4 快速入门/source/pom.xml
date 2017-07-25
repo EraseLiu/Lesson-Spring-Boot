@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.edu.spring</groupId>
-	<artifactId>spring</artifactId>
+	<artifactId>spring01</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
@@ -21,6 +21,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
 		</dependency>
 	</dependencies>
 </project>

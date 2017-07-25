@@ -2,13 +2,13 @@ package com.edu.spring;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class App {
+public class App01 {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
 		System.out.println();
-		// Create bean
-		System.out.println("Create bean");
+		// Get bean
+		System.out.println("Get bean");
 		// 1
 		System.out.println(context.getBean(MyBean.class));
 		System.out.println(context.getBean("myBeanByName"));
