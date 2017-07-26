@@ -1,7 +1,5 @@
 # Spring 4 扩展分析
 
-@(Spring Boot)[Learn]
-
 ### 获取 ApplicationContext
 
 1. `@Autowired`
