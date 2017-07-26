@@ -1,5 +1,7 @@
 # Spring 4 扩展分析
 
+@(Spring Boot)[Learn]
+
 ### 获取 ApplicationContext
 
 1. `@Autowired`
@@ -142,3 +144,38 @@ class EchoBeanPostProcessor implements BeanPostProcessor {
 4   org.edu.spring.EchoBeanPostProcessor.postProcessAfterInitialization:    useBean
 UseBean [applicationContext=org.springframework.context.annotation.AnnotationConfigApplicationContext@7e6cbb7a: startup date [Wed Jul 26 11:57:27 CST 2017]; root of context hierarchy, object01=Object01 [applicationContext=org.springframework.context.annotation.AnnotationConfigApplicationContext@7e6cbb7a: startup date [Wed Jul 26 11:57:27 CST 2017]; root of context hierarchy, getClass()=class org.edu.spring.Object01, hashCode()=1050349584, toString()=org.edu.spring.Object01@3e9b1010]]
 ```
+
+--------------------------------------------------------------------------
+
+
+#### `BeanFactoryPostProcessor` and `BeanDefinitionRegistryPostProcessor`
+
+```java
+package org.springframework.beans.factory.config;
+
+import org.springframework.beans.BeansException;
+public interface BeanFactoryPostProcessor {
+    void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException;
+}
+
+package org.springframework.beans.factory.support;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+
+public interface BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor {
+    void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException;
+}
+```
+
+> `BeanFactoryPostProcessor`
+> 允许自定义修改应用程序上下文的 bean 定义, 调整上下文的基础 bean 工厂的bean 属性值.
+
+> `BeanFactoryPostProcessor.postProcessBeanFactory`
+> 在其标准初始化后修改应用程序上下文的内部 bean 工厂. 所有 bean 定义都将被加载, 但是还没有实例化 bean. 这允许覆盖或添加属性, 即使是急切地初始化 bean.
+
+> `BeanDefinitionRegistryPostProcessor`
+> 该标准 `BeanFactoryPostProcessor` SPI扩展, 允许在普通 `BeanFactoryPostProcessor` 检测开始为进一步的bean定义的登记. 特别是, `BeanDefinitionRegistryPostProcessor` 可以登记进一步 bean 定义反过来定义 `BeanFactoryPostProcessor` 实例.
+
+> `BeanDefinitionRegistryPostProcessor.postProcessBeanDefinitionRegistry`
+> 在其标准初始化之后修改应用程序上下文的内部 bean 定义注册表. 所有常规 bean 定义都将被加载, 但是还没有实例化 bean. 这允许在下一个后处理阶段之前添加进一步的 bean 定义.
