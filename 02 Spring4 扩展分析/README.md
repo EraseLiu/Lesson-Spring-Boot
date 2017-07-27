@@ -135,7 +135,7 @@ class EchoBeanPostProcessor implements BeanPostProcessor {
 }
 ```
 
-```java
+```log
 1   org.edu.spring.UseBean.setApplicationContext:   org.springframework.context.annotation.AnnotationConfigApplicationContext@7e6cbb7a
 2   org.edu.spring.EchoBeanPostProcessor.postProcessBeforeInitialization:   useBean
 3   org.edu.spring.UseBean.afterPropertiesSet
