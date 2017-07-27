@@ -51,7 +51,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
+@SpringBootConfiguration
 public class App01 {
 
     @Bean
@@ -68,7 +68,7 @@ public class App01 {
 }
 ```
 
-```log
+```java
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -85,4 +85,26 @@ public class App01 {
 Hello Spring Boot ~~~
 2017-07-27 10:52:33.071  INFO 5548 --- [           main] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5c18298f: startup date [Thu Jul 27 10:52:32 CST 2017]; root of context hierarchy
 2017-07-27 10:52:33.072  INFO 5548 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+```
+
+`org.springframework.boot.SpringBootConfiguration`
+
+```java
+package org.springframework.boot;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.springframework.context.annotation.Configuration;
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Configuration
+public @interface SpringBootConfiguration {
+
+}
 ```
