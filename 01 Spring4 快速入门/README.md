@@ -233,6 +233,6 @@ public class AnnotationScan {
 
 `:log`
 
-```prolog
+```log
 org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.edu.spring.UserController' available
 ```
