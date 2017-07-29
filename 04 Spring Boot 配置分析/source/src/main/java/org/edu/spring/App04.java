@@ -11,6 +11,9 @@ public class App04 {
 		// 没有成功, 值为 null 查找资料中...
 		context.getBean(DataSourceConifg.class).show();
 
+		System.out.println(context.getEnvironment().getProperty("local.ports"));
+		System.out.println(context.getEnvironment().getProperty("languages"));
+
 		System.out.println();
 		context.close();
 	}
