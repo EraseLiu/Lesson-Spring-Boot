@@ -1,4 +1,9 @@
-languages:
+db:
+  user-name: root
+  password: pwdRoot
+  driver-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/demo
+  languages:
   - Ruby
   - Perl
   - Python

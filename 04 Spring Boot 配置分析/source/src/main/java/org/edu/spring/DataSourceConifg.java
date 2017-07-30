@@ -1,5 +1,7 @@
 package org.edu.spring;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.env.Environment;
@@ -20,8 +22,10 @@ public class DataSourceConifg {
 
 	private String url;
 
+	private List<String> languages;
+
 	public void show() {
-		System.out.println("db.userName: " + this.environment.getProperty("db.userName"));
+		System.out.println("db.user-name: " + this.environment.getProperty("db.user-name"));
 		System.out.println(this.toString());
 	}
 
@@ -57,10 +61,19 @@ public class DataSourceConifg {
 		this.url = url;
 	}
 
+	public List<String> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("DataSourceConifg [userName=%s, password=%s, driverName=%s, url=%s]", userName, password,
-				driverName, url);
+		return String.format(
+				"DataSourceConifg [userName=%s, password=%s, driverName=%s, url=%s, languages=%s]",
+				userName, password, driverName, url, languages);
 	}
 
 }
