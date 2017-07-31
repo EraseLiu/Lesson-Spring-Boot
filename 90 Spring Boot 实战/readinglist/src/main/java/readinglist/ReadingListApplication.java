@@ -1,5 +1,7 @@
 package readinglist;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -7,6 +9,8 @@ import org.springframework.context.annotation.Conditional;
 
 @SpringBootApplication
 public class ReadingListApplication {
+
+	private static final Log logger = LogFactory.getLog(ReadingListApplication.class);
 
 	@Conditional(JdbcTemplateCondition.class)
 	public MyService myService() {
@@ -18,7 +22,7 @@ public class ReadingListApplication {
 		try {
 			context.getBean("myService");
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			logger.error(e);
 		}
 	}
 }
