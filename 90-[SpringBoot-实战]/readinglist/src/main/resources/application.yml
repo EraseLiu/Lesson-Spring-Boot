@@ -1,6 +1,6 @@
 server:
   port: 8000
----
+
 spring:
   main:
     banner-mode: console
@@ -10,10 +10,10 @@ spring:
 #    url: jdbc:mysql://192.168.1.10:3306/binal_shop
 #    username: root
 #    password: KK8176
----
+
 logging:
   level:
     root: info
----
+
 amazon:
   associate-id: habuma-20
