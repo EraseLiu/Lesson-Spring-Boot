@@ -2,7 +2,7 @@
 
 #### 配置接口 `Environment`
 
-接口表示当前应用程序正在运行的环境. 模型应用程序环境的两个关键方面: `profiles` 和 `properties`. 属性访问方法是通过 `PropertyResolver` 超暴露.
+接口表示当前应用程序正在运行的环境. 模型应用程序环境的两个关键方面: `profiles` 和 `properties`. 属性访问方法是通过 `PropertyResolver` 暴露.
 
 ```java
 @Autowired
@@ -99,5 +99,67 @@ this.propertySource: Hello2
 
 
 配置文件默认位置
-`classpast:application.properties` or `classpast:config/application.properties` or `classpast:application.yml` or `classpast:config/application.yml`
+`classpast:application.properties` or `classpast:config/application.properties` or `classpast:application.yml` or `classpast:config/application.properties`
 
+
+
+#### 接口 `EnvironmentPostProcessor`
+
+允许在应用程序上下文被刷新之前自定义应用程序的环境.
+
+```java
+@Component
+public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor {
+
+    @Override
+    public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
+        // 可以是文件
+        Properties properties = new Properties();
+        PropertiesPropertySource source = new PropertiesPropertySource("my", properties);
+        environment.getPropertySources().addLast(source);
+    }
+
+}
+```
+
+#### 注解 `@ProFile(value)`
+
+表示当一个或多个指定的配置文件处于活动状态时, 组件有资格注册.
+可以通过其可以选择配置.
+
+```java
+@Component
+@Profile("devpro")
+public class ProFileTest {
+
+    @Bean
+    public Runnable createRunnable() {
+        System.out.println("Dev create runnable");
+        return () -> { };
+    }
+
+}
+```
+
+```java
+@SpringBootApplication
+public class App04 {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(App04.class);
+        // --spring.profiles.active=devpro or
+        app.setAdditionalProfiles("devpro");
+        ConfigurableApplicationContext context = app.run(args);
+        System.out.println();
+
+        System.out.println(context.getBean(Runnable.class));
+
+        System.out.println();
+        context.close();
+    }
+
+}
+```
+```
+org.edu.spring.MyProFile$$Lambda$7/596470015@12a94400
+```

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("devpro")
-public class ProFileTest {
+public class MyProFile {
 
 	@Bean
 	public Runnable createRunnable() {
