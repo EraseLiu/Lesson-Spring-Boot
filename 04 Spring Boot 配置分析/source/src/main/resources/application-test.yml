@@ -1,0 +1,2 @@
+db:
+  url: jdbc:mysql://123.13.1.10:3306/demo
