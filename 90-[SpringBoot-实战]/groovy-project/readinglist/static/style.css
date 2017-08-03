@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+body {
+	background-color: #cccccc;
+	font-family: arial, helvetica, sans-serif;
+}
+
+.bookHeadline {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+.bookDescription {
+	font-size: 10pt;
+}
+
+label {
+	font-weight: bold;
+}
+
+.errorPage {
+	margin: 0 auto;
+	max-width: 960px;
+	max-height: 600px
+}
