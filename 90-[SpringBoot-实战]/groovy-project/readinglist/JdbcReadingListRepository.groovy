@@ -4,7 +4,7 @@ class JdbcReadingListRepository implements ReadingListRepository {
 	@Autowired
 	JdbcTemplate jdbc
 
-	List<Boot> findByReader(String reader) {
+	List<Book> findByReader(String reader) {
 		jdbc.query("select id, reader, isbn, title, author, description from Book where reader=?", {
 			rs, row ->
 				new Book(
@@ -15,15 +15,17 @@ class JdbcReadingListRepository implements ReadingListRepository {
 					author: rs.getString(5),
 					description: rs.getString(6)
 				)
-			} as RowMapper, reader)
+			} as RowMapper,
+			reader)
 	}
 
 	void save(Book book) {
 		jdbc.update("insert into Book (reader, isbn, title, author, description) values (?, ?, ?, ?, ?)",
 			book.reader,
 			book.isbn,
-			booktitle,
-			bookdescription)
+			book.title,
+			book.author,
+			book.description)
 	}
 
 }
