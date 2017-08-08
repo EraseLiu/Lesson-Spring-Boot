@@ -20,22 +20,12 @@ public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor {
 
 	@Override
 	public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-		InputStream input = null;
 		// 可以是文件
 		Properties properties = new Properties();
-		try {
-			input = new FileInputStream("target/classes/db.properties");
+		try (InputStream input = new FileInputStream("target/classes/db.properties")) {
 			properties.load(input);
 		} catch (IOException e) {
 			logger.error(e);
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					logger.error(e);
-				}
-			}
 		}
 		PropertiesPropertySource source = new PropertiesPropertySource("my", properties);
 		environment.getPropertySources().addLast(source);
